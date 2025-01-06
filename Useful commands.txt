@@ -1,0 +1,7 @@
+docker ps - lists docker containers
+
+docker exec -it {container_id} bash - connects to container machine
+
+psql -U postgres - runs postgres command line program
+
+ 
