@@ -1,8 +1,10 @@
 ﻿
+using Catalog.API.Products.CreateProduct;
+
 namespace Catalog.API.Products.GetProducts
 {
     //public record GetProductRequest();
-    public record GetProductsResponse(IEnumerable<Product> products);
+    public record GetProductsResponse(IEnumerable<Product> Products);
 
     public class GetProductsEndpoint : ICarterModule
     {
@@ -13,7 +15,12 @@ namespace Catalog.API.Products.GetProducts
                 var result = await sender.Send(new GetProductsQuery());
                 var response = result.Adapt<GetProductsResponse>();
                 return Results.Ok(response);
-            });
+            })
+            .WithName("GetProducts")
+            .Produces<GetProductsResponse>(StatusCodes.Status200OK)
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .WithSummary("Get Products")
+            .WithDescription("Get Products");
         }
     }
 }
