@@ -22,7 +22,7 @@ namespace Catalog.API.Products.GetProductById
             .Produces<GetProductsResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithSummary("Get Product By ID")
-            .WithDescription("Get Product By ID"); ;
+            .WithDescription("Get Product By ID");
         }
     }
 }
